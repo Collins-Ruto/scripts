@@ -29,7 +29,7 @@ pkg install getconf
 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
 # add to fish
 
-echo -e "starship init fish | source" >> ~/.config/starship.toml
+echo -e "starship init fish | source" >> ~/.config/fish/config.fish
 # copy default config
 cp ../themes/powerline/starship.toml ~/.config/starship.toml
 
