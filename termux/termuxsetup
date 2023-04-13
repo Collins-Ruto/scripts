@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# update repositories and upgrade
+
+apt update  -y
+apt dist-upgrade -y
+
+apt install fish
+
+# fisher
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+
+# z
+fisher z
+
+# nvm 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+fisher install jorgebucaran/nvm.fish
+nvm install lts
+# add to path
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# uncomment line to add to fish config
+# echo -e "function nvm \nbass source ~/.nvm/nvm.sh --no-use ';' nvm $argv \nend" >> ~/.config/fish/functions/nvm.fish
+
+# starship
+pkg install getconf
+curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+# add to fish
+echo -e starship init fish | source
+cp ../../starship/powerline/starship.toml ~/.config/starship.toml
+
+
+exit
