@@ -26,7 +26,7 @@ echo -e "function nvm \nbass source ~/.nvm/nvm.sh --no-use ';' nvm $argv \nend" 
 
 # starship
 pkg install getconf
-curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /usr/bin
 # add to fish
 
 echo -e "starship init fish | source" >> ~/.config/fish/config.fish
