@@ -5,7 +5,8 @@
 sudo apt update  -y
 sudo apt dist-upgrade -y
 
-sudo apt install fish
+# basic installs
+sudo apt install fish lolcat figlet screenfetch neofetch ncal
 
 # fisher
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
@@ -17,6 +18,7 @@ fisher z
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fisher install jorgebucaran/nvm.fish
 nvm install lts
+
 # add to path
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -27,11 +29,16 @@ echo -e "function nvm \nbass source ~/.nvm/nvm.sh --no-use ';' nvm $argv \nend" 
 # starship
 pkg install getconf
 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /usr/bin
-# add to fish
 
+# add to fish
 echo -e "starship init fish | source" >> ~/.config/fish/config.fish
+
 # copy default config
 cp ../themes/powerline/starship.toml ~/.config/starship.toml
 
+# install icons-in-terminal
+git clone https://github.com/sebastiencs/icons-in-terminal.git
+cd icons-in-terminal
+./install.sh
 
 exit
